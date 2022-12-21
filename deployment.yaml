@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-demo
+  namespace: default
+spec:
+  replicas: 4
+  type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: back-end
+          image: public.ecr.aws/w2e2d4p5/demo-env-iit:latest
+          command: [ "/bin/sh", "-c", "--" ]
+          args: [ "while true; do sleep 3000000; done;" ]
+          ports:
+            - containerPort: 3000
