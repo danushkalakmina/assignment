@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: back-end
-          image: public.ecr.aws/w2e2d4p5/demo-env-iit:latest
+          image: 357247846217.dkr.ecr.us-east-1.amazonaws.com:latest
           command:
             - /bin/sh
             - -c
